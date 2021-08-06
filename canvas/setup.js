@@ -1,13 +1,20 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, {useState} from 'react'
+import { View } from 'react-native'
 import styled from "styled-components/native";
 import projectile from "../assets/projectile.png";
+import Animated, {
+  useSharedValue,
+  Clock,
+  useAnimatedStyle,
+  withTiming,
+} from "react-native-reanimated";
 
 var roadside;
 var accessibility;
 var coupe;
 var possessions;
 var sasuke;
+var hightLighted;
 var records = {
   Amethyst: "#9b5de5",
   Magenta_Crayola: "#f15bb5",
@@ -29,22 +36,69 @@ const Qb = styled.View`
   border-radius: 25px;
 `;
 
-const Ball = styled.Image`
-    position: absolute;
-    top: 210px;
-    left: 35px;
-    width: 15px;
-    height: 15px;
+const Ball = {
+  position: "absolute",
+    top: 210,
+    left: 35,
+    width: 15,
+    height: 15
+}
+
+const Button = styled.TouchableOpacity`
+  padding: 10px;
+  margin-top:200px;
+  width: 100px;
+  height:50px;
+  align-self: center;
+  shadowOffset: { width: 10, height: 10 };
+  shadowColor: #333;
+  shadowOpacity: 1;
+  elevation: 3;
+  justifyContent:center;
+  align-items:center;
+  background-color:${records.Sea_Green_Crayola}
+`;
+const Text = styled.Text`
+  color: #fff;
+  font-size: 11px;
 `
 
 const setup = () => {
+  const offset = useSharedValue(0);
+  const [thrown, setThrown] = useState(0);
+const animatedStyles = useAnimatedStyle(() => {
+  return {
+    transform: [{ translateX: offset.value }],
+  };
+});
+
+const MOVE_BALL = () => {
+  
+  console.log("hello world")
+  if(!thrown){
+  offset.value = withTiming(290);
+  setThrown(true)
+} 
+if(thrown){
+  offset.value = withTiming(0);
+  setThrown(false)
+}
+}
+
     return (
-        <Container>
-            <Qb style={{left: 10}}/>
-            <Ball source = {projectile} resizeMode="contain" />
-            <Qb style={{right:10}} />
-        </Container>
-    )
+      <Container>
+        <Qb style={{ left: 10 }} />
+        <Qb style={{ left: 300 }} />
+        <Animated.Image
+          source={projectile}
+          style={[Ball, animatedStyles]}
+          resizeMode="contain"
+        />
+        <Button onPress={MOVE_BALL}>
+          <Text>Hello World</Text>
+        </Button>
+      </Container>
+    );
 }
 
 export default setup
