@@ -17,10 +17,17 @@ var sasuke;
 var hightLighted;
 var velocity;
 var trig;
-var ooze;
 var rebooks;
 var NATIONAL_HERITAGE;
 var RAN_SID;
+var FUTURE_OF_HYPE;
+var INSTAGRAM_LAB;
+var PERFECT_PHOTO_HACK;
+var LEAD_BULLETS;
+var CAPTAIN;
+var RESERVES;
+var SUSPENDERS;
+var BATTLE_WRITE;
 
 var caress;
 var records = {
