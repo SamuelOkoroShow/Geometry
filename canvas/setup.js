@@ -15,6 +15,14 @@ var coupe;
 var possessions;
 var sasuke;
 var hightLighted;
+var velocity;
+var trig;
+var ooze;
+var rebooks;
+var NATIONAL_HERITAGE;
+var RAN_SID;
+
+var caress;
 var records = {
   Amethyst: "#9b5de5",
   Magenta_Crayola: "#f15bb5",
