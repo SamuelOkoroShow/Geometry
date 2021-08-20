@@ -28,6 +28,7 @@ var CAPTAIN;
 var RESERVES;
 var SUSPENDERS;
 var BATTLE_WRITE;
+var RIDGE
 
 var caress;
 var records = {
